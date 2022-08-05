@@ -44,13 +44,12 @@ def main(name: str):
                     team_dict[team_2_name] = 3
                 if team_dict.get(team_1_name) is None:
                     team_dict[team_1_name] = 0
-        f.close()
         sorted_teams = sorted(team_dict.items(), key=lambda x: (-x[1], x[0]))
-        for i,x in enumerate(sorted_teams, start=1):
-            if x[1] != 1:
-                print(f"{i}. {x[0]}{x[1]} pts")
+        for index,team in enumerate(sorted_teams, start=1):
+            if team[1] != 1:
+                print(f"{index}. {team[0]}{team[1]} pts")
             else:
-                print(f"{i}. {x[0]}{x[1]} pt")
+                print(f"{index}. {team[0]}{team[1]} pt")
 
 
 def _version_callback(value: bool) -> None:
