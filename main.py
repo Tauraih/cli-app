@@ -1,5 +1,3 @@
-from operator import itemgetter
-from typing import OrderedDict
 import typer
 
 
@@ -7,7 +5,7 @@ app = typer.Typer()
 
 
 @app.command()
-def hello(name: str):
+def main(name: str):
     with open(name, 'r') as f:
         team_dict = dict()
         for line in f:
