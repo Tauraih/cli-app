@@ -1,4 +1,9 @@
+from typing import Optional
+
 import typer
+
+__app_name__ = "cli app"
+__version__ = "0.1.0"
 
 
 app = typer.Typer()
@@ -46,6 +51,26 @@ def main(name: str):
                 print(f"{i}. {x[0]}{x[1]} pts")
             else:
                 print(f"{i}. {x[0]}{x[1]} pt")
+
+
+def _version_callback(value: bool) -> None:
+    if value:
+        typer.echo(f"{__app_name__} v{__version__}")
+        raise typer.Exit()
+
+
+@app.callback()
+def version(
+    version: Optional[bool] = typer.Option(
+        None,
+        "--version",
+        "-v",
+        help="Show the application's version",
+        callback = _version_callback,
+        is_eager=True,
+    )
+) -> None:
+    return
 
 
 if __name__ == "__main__":
